@@ -1,24 +1,35 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+import { COLORS } from "@/constants/ui";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { Stack } from "expo-router";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <Stack
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: COLORS.BACKGROUND,
+        },
+        headerTintColor: COLORS.GREY,
+      }}
+    >
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="create-task"
+        options={{
+          title: "Создание задачи",
+          headerStyle: {
+            backgroundColor: COLORS.BACKGROUND,
+          },
+          headerTintColor: COLORS.GREY,
+          headerRight: () => (
+            <Ionicons
+              name={"checkmark-sharp"}
+              size={36}
+              color={COLORS.YELLOW}
+            />
+          ),
+        }}
+      />
+    </Stack>
   );
 }
