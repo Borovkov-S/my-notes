@@ -7,7 +7,7 @@ export default function Index() {
     <View
       style={styles.container}
     >
-      <Link href='/tasks'>Посмотреть все задачи</Link>
+      <Link href='/notes'>Посмотреть все задачи</Link>
     </View>
   );
 }

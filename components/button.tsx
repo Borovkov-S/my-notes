@@ -1,28 +1,28 @@
 import { COLORS } from "@/constants/ui";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import React from "react";
-import { Pressable, StyleSheet } from "react-native";
+import { ReactNode } from "react";
+import { Pressable, PressableProps, StyleSheet } from "react-native";
 
-type ButtonProps = {
-  label?: string;
+type ButtonProps = PressableProps & {
+  children: ReactNode;
   onPress?: () => void;
 };
 
-export const Button: React.FC<ButtonProps> = ({ label, onPress }) => {
+const Button = ({ children, onPress, ...props }: ButtonProps) => {
   return (
-    <Pressable style={styles.button} onPress={onPress}>
-      <Ionicons name="add-circle-outline" size={75} color={COLORS.BLUE} />
+    <Pressable style={styles.container} onPress={onPress} {...props}>
+      {children}
     </Pressable>
   );
 };
 
-const styles = StyleSheet.create({
-  button: {
-    position: 'absolute',
-    bottom: 20,
-    right: 20
-  },
-  buttonLabel: {},
-});
-
 export default Button;
+
+const styles = StyleSheet.create({
+  container: {
+    borderWidth: 1,
+    borderColor: COLORS.GREY.DARK,
+    borderRadius: 10,
+    backgroundColor: COLORS.BLUE.MIDDLE,
+    padding: 7,
+  },
+});

@@ -1,17 +1,17 @@
-import { Tabs } from "expo-router";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { COLORS } from "@/constants/ui";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { Tabs } from "expo-router";
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: COLORS.BLUE,
+        tabBarActiveTintColor: COLORS.BLUE.DARK,
         headerStyle: {
           backgroundColor: COLORS.BACKGROUND,
-          height: 80
+          height: 80,
         },
-        headerTintColor: COLORS.GREY,
+        headerTintColor: COLORS.GREY.DARK,
         tabBarStyle: {
           backgroundColor: COLORS.BACKGROUND,
         },
@@ -31,9 +31,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="tasks"
+        name="notes"
         options={{
-          title: "Задачи",
+          title: "Заметки",
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "list-sharp" : "list-outline"}
@@ -44,9 +44,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="projects"
+        name="folders"
         options={{
-          title: "Проекты",
+          title: "Папки",
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "folder-sharp" : "folder-outline"}
