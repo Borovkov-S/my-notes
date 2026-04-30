@@ -1,13 +1,12 @@
 import { COLORS } from "@/constants/ui";
+import useNoteStore from "@/store/note-store";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useState } from "react";
-import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
-import useNoteStore from "@/store/note-store";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export default function SelectDeadline() {
-  const { selectedDeadline, setSelectedDeadline } =
-    useNoteStore();
+  const { selectedDeadline, setSelectedDeadline } = useNoteStore();
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [isDatePickerVisible, setDatePickerVisible] = useState(false);
 
@@ -40,6 +39,7 @@ export default function SelectDeadline() {
       <Pressable style={styles.pressable} onPress={showDatePicker}>
         <TextInput
           placeholder="Указать дату"
+          placeholderTextColor={COLORS.GREY.MIDDLE}
           value={selectedDeadline}
           style={styles.textInput}
           editable={false} // блокировка ввода с клавиатуры
